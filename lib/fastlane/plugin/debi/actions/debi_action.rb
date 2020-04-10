@@ -6,6 +6,13 @@ module Fastlane
     class DebiAction < Action
       def self.run(params)
         UI.message("The debi plugin is working!")
+        require "open-uri"
+
+        open("https://s3.amazonaws.com/com.twilio.prod.twilio-docs/images/test.original.jpg") do |image|
+          File.open("./test.jpg", "wb") do |file|
+            file.write(image.read)
+          end
+        end
       end
 
       def self.description
